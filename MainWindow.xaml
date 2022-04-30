@@ -116,5 +116,25 @@
             Click="buttonCalculate_Click"
             Background="White"/>
 
+        <oxy:PlotView
+            x:Name="Graph"
+            Grid.Column="3"
+            Grid.Row="1"
+            Grid.RowSpan="3"/>
+
+        <Button
+            Grid.Column="3"
+            Grid.Row="4"
+            Content="Построить график"
+            FontSize="15"
+            FontWeight="Bold"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Height="30"
+            Width="150"
+            x:Name="buttonGraph"
+            Click="buttonGraph_Click"
+            Background="White"/>
+
     </Grid>
 </Window>

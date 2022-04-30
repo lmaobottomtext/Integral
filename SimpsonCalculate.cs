@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 public class SimpsonCalculate : ICalculator
 {
@@ -16,6 +17,8 @@ public class SimpsonCalculate : ICalculator
         //0.6666*(0+4*1.2+2*6.6)
         return h / 3.0 * (integral(lowLim) + 4 * sum1 + 2 * sum2);
         //return sum2;*/
+        Stopwatch timer = new Stopwatch();
+        timer.Start();
         double h = (double)((upLim - lowLim) / splitCount);
         double sum1 = 0.0;
         double sum2 = 0.0;
@@ -34,6 +37,9 @@ public class SimpsonCalculate : ICalculator
         }
 
         double result = h / 3.0 * (0.5 * integral(lowLim+0.0000001) + sum1 + 2 * sum2 + 0.5 * integral(upLim));
+        timer.Stop();
+        TimeSpan t = timer.Elapsed;
+        time = t.TotalMilliseconds;
         return result;
     }
 }
