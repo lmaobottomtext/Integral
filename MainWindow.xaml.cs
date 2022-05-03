@@ -56,7 +56,6 @@ namespace Integrtals
         
         private ICalculator GetCalculator()
         {
-            /*return new RectangleCalculate();*/
             return method.SelectedIndex switch
             {
                 1 => new SimpsonCalculate(),
@@ -67,14 +66,18 @@ namespace Integrtals
 
         private void DoCalculate()
         {
-            int splits = Convert.ToInt32(splitCounter.Text);
-            int upLim = Convert.ToInt32(upperLimit.Text);
-            int lowLim = Convert.ToInt32(lowerLimit.Text);
+            double splits = Convert.ToDouble(splitCounter.Text);
+            double upLim = Convert.ToDouble(upperLimit.Text);
+            double lowLim = Convert.ToDouble(lowerLimit.Text);
             double time = 0;
 
             ICalculator calcult = GetCalculator();
             double result = calcult.Calculate(splits, upLim, lowLim, x => 322 * x * x + Math.Log(x) + 2, out time);
-            MessageBox.Show($"Результат вычислений = {result.ToString()}");
+            if(result != -1)
+            {
+                MessageBox.Show($"Результат вычислений = {result.ToString()}");
+            }
+            
         }
     }
 }
